@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
+const { dbUrl } = require("../constants");
 
-mongoose.connect("mongodb://localhost/bikeapp", {
+mongoose.connect(dbUrl, {
   useCreateIndex: true,
   useUnifiedTopology: true,
   useNewUrlParser: true,
