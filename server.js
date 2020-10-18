@@ -1,6 +1,6 @@
 var http = require("http");
 
-var port = normalizePort(process.env.PORT || "3001");
+var port = normalizePort("3001");
 
 function normalizePort(val) {
   var port = parseInt(val, 10);
@@ -18,12 +18,12 @@ function normalizePort(val) {
   return false;
 }
 
-module.exports = app => {
+module.exports = (app) => {
   const server = http.createServer(app);
   app.set("port", port);
 
   return {
     server,
-    port
+    port,
   };
 };
