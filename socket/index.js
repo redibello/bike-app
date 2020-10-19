@@ -12,8 +12,14 @@ module.exports = function (server) {
 
   io.of("/stands")
     .use(authenticateSocket)
-    .on("connection", async (socket) => {
+    .on("connection", async () => {
       console.log("new stand connection");
+    });
+
+  io.of("/pickups")
+    .use(authenticateSocket)
+    .on("connection", async () => {
+      console.log("new pickup connection");
     });
 
   io.of("/user-location")
