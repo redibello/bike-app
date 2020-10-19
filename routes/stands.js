@@ -35,7 +35,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const { id: _id } = req.params;
-    const stand = await Stand.find({ _id });
+    const stand = await Stand.findOne({ _id });
 
     res.send(stand);
   } catch (e) {
