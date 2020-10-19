@@ -1,14 +1,30 @@
 const router = require("express").Router();
 const Stand = require("../db/stand");
 
-router.get("/", async function (req, res) {
+router.get("/", async (req, res) => {
   try {
     const stands = await Stand.find();
-    // stands.forEach(async (stand) => {
-    //   stand.set("usableBikes", stand.spots);
-    //   stand.set("freeSpots", 0);
-    //   await stand.save();
-    // });
+
+    // try {
+    //   for (let i = 0; i < 660; i++) {
+    //     const stand = stands[Math.floor(i / 20)];
+    //     stand.set("usableBikes", 20);
+    //     stand.set("spots", 20);
+
+    //     const bike = new Bike({
+    //       stand,
+    //       latitude: stand.latitude,
+    //       longitude: stand.longitude,
+    //       status: "static",
+    //     });
+
+    //     await bike.save();
+    //     await stand.save();
+    //   }
+    // } catch (e) {
+    //   console.log(e);
+    // }
+
     res.send(stands);
   } catch (e) {
     res.status(500).send();
