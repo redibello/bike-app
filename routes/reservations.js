@@ -104,6 +104,7 @@ module.exports = (socket) => {
 
       const reservation = await Reservation.findOne({ _id });
       reservation.set("status", "locked");
+      await reservation.populate("stand").execPopulate();
 
       const bike = await Bike.findOne({ _id: reservation.bike });
       bike.set("status", "locked");
