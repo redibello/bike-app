@@ -19,7 +19,6 @@ const { server, port } = require("./server")(app);
 const socket = require("./socket")(server);
 
 // init routes
-// require("./jobs")
 require("./routes")(app, socket);
 
 // catch 404 and forward to error handler
