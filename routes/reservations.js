@@ -131,7 +131,7 @@ module.exports = (socket) => {
       req.user.set("balance", req.user.balance - 2);
       await req.user.save();
 
-      res.status(200).send();
+      res.status(200).send(reservation);
     } catch (e) {
       res.status(500).send();
       console.log(e);

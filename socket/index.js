@@ -5,11 +5,6 @@ const User = require("../db/user");
 module.exports = function (server) {
   const io = socketIO(server);
 
-  // io.on("connection", (socket) => {
-  //   console.log("new user");
-  //   socket.send("Hello!");
-  // });
-
   io.of("/stands")
     .use(authenticateSocket)
     .on("connection", async () => {
@@ -32,9 +27,9 @@ module.exports = function (server) {
       socket.on("update", (location) => {
         console.log("update location");
         user.location = location;
-        user.save();
+        await user.save();
 
-        socket.broadcast.emit("update-user", { location, user });
+        socket.broadcast.emit("update-user", { location, user: user.id });
       });
     });
 
