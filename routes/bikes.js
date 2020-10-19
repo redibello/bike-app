@@ -105,13 +105,15 @@ module.exports = (socket) => {
       session.set("status", "ended");
       session.set("endStand", stand);
 
-      const price =
+      let price =
         moment().diff(moment(session.createdAt), "minutes") *
         (session.hasPenalty
           ? 0.5 * 1.1
           : session.hasDiscount
           ? 0.5 * 0.8
           : 0.5);
+
+      price = price < 5 ? 5 : price;
 
       user.set("balance", user.balance - price);
 

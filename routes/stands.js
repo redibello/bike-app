@@ -32,4 +32,16 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  try {
+    const { id: _id } = req.params;
+    const stand = await Stand.find({ _id });
+
+    res.send(stand);
+  } catch (e) {
+    res.status(404).send();
+    console.log(e);
+  }
+});
+
 module.exports = router;
