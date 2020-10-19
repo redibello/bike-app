@@ -23,7 +23,8 @@ module.exports = (socket) => {
   router.get("/:id", authenticate, async function (req, res) {
     try {
       const _id = req.params.id;
-      const bike = await Bike.findOne({ _id }).populate("stand");
+      const bike = await Bike.findOne({ _id });
+      await bike.populate("stand").execPopulate();
       res.send(bike);
     } catch (e) {
       res.status(404).send();
