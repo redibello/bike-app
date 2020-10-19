@@ -1,6 +1,7 @@
 var http = require("http");
 
 var port = normalizePort(process.env.PORT || "3000");
+console.log(port);
 
 function normalizePort(val) {
   var port = parseInt(val, 10);
