@@ -24,7 +24,7 @@ module.exports = function (server) {
 
       const user = await User.findByToken(token);
 
-      socket.on("update", (location) => {
+      socket.on("update", async (location) => {
         console.log("update location");
         user.location = location;
         await user.save();
