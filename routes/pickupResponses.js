@@ -82,13 +82,11 @@ module.exports = (socket) => {
       await response.populate("pickup").execPopulate();
       await response.populate("pickup.requestee").execPopulate();
 
-      console.log(response);
-
       socket.of("/pickups").emit("response-accepted", response);
 
       const pickup = await Pickup.findOne({ _id: response.pickup._id });
 
-      pickup.set("acceptee", response.user);
+      pickup.set("acceptee", response.user._id);
       await pickup.save();
 
       const session = await Session.findOne({
