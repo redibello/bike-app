@@ -19,8 +19,6 @@ module.exports = (socket) => {
           .populate("requestee")
           .exec();
 
-        // console.log(responses);
-
         res.send(responses);
       } else res.send([]);
     } catch (e) {
@@ -109,5 +107,3 @@ module.exports = (socket) => {
 
   return router;
 };
-
-// module.exports = router;

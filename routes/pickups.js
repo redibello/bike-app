@@ -118,5 +118,3 @@ module.exports = (socket) => {
 
   return router;
 };
-
-// module.exports = router;

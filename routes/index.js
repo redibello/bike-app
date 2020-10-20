@@ -1,5 +1,5 @@
 module.exports = (app, socket) => {
-  app.use("/users", require("./users")(socket));
+  app.use("/users", require("./users"));
   app.use("/stands", require("./stands"));
   app.use("/reservations", require("./reservations")(socket));
   app.use("/pickups", require("./pickups")(socket));
